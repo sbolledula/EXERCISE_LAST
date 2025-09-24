@@ -64,3 +64,18 @@ jobs:
     steps:
       - run: echo "- Test the artifact in the production environment"
       - run: echo "# All tests and deployments have completed successfully!"
+  print_summary:
+    needs: [integration, build, test-artifact, development, staging, test-staging, production, test-production]
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "### Deployment Pipeline Summary"
+          echo "- Integration job: ${{ needs.integration.result }}"
+          echo "- Build job: ${{ needs.build.result }}"
+          echo "- Test Artifact job: ${{ needs.test-artifact.result }}"
+          echo "- Development Deployment job: ${{ needs.development.result }}"
+          echo "- Staging Deployment job: ${{ needs.staging.result }}"
+          echo "- Test Staging job: ${{ needs.test-staging.result }}"
+          echo "- Production Deployment job: ${{ needs.production.result }}"
+          echo "- Test Production job: ${{ needs.test-production.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "### End of Summary" >> $GITHUB_STEP_SUMMARY
