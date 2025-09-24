@@ -34,7 +34,7 @@ jobs:
       - run: echo "- Auto-deploy the artifact to the development environment"
         
   staging:
-    needs: development
+    needs: test-artifact
     runs-on: ubuntu-latest
     steps:
       - run: |
