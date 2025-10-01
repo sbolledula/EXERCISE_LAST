@@ -57,6 +57,7 @@ jobs:
           echo "and after the staging tests have passed..."
           echo "require a review before deploying to the production envirionment, then..."
           echo "- Deploy the artifact to the production environment"
+          echo "Trigger event: ${{ github.event_name }}"
 
   test-production:
     needs: production
