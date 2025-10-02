@@ -58,6 +58,7 @@ jobs:
           echo "require a review before deploying to the production envirionment, then..."
           echo "- Deploy the artifact to the production environment"
           echo "Trigger event: ${{ github.event_name }}"
+          echo "Runner Environment: ${{ runner.os }} with ${{ runner.temp }} as temp and ${{ runner.tool_cache }} as tool cache and ${{ runner.temp }} as workspace"
 
   test-production:
     needs: production
